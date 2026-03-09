@@ -1,4 +1,9 @@
 from data_sources.curseforge import fetch_featured_curseforge, fetch_popular_curseforge
+from data_sources.youtube import get_links_from_channel, search_popular_videos
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # GAME IDs
 # Minecraft = 432
@@ -11,7 +16,8 @@ from data_sources.curseforge import fetch_featured_curseforge, fetch_popular_cur
 # World = 17
 
 if __name__ == "__main__":
-    CurseForgeModpacks = fetch_popular_curseforge(432)
-    for modpack in CurseForgeModpacks:
-        print(modpack['name'])
+    minecraft_channel_ids = os.getenv("MINECRAFT_YOUTUBE_CHANNEL_IDS").split(",")
+    hytale_channel_ids = os.getenv("HYTALE_YOUTUBE_CHANNEL_IDS").split(",")
+    description_data = get_links_from_channel(hytale_channel_ids)
+    print(description_data)
     
