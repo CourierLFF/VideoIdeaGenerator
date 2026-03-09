@@ -1,5 +1,6 @@
-from data_sources.curseforge import fetch_featured_curseforge_minecraft
+from data_sources.curseforge import fetch_featured_curseforge
 
 if __name__ == "__main__":
-    featuredCurseforgeMinecraft = fetch_featured_curseforge_minecraft()
-    print(featuredCurseforgeMinecraft)
+    featuredCurseforge = fetch_featured_curseforge(70216)
+    for mod in featuredCurseforge:
+        print(mod['links']['websiteUrl'])
