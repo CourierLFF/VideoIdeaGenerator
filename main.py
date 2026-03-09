@@ -1,6 +1,17 @@
-from data_sources.curseforge import fetch_featured_curseforge
+from data_sources.curseforge import fetch_featured_curseforge, fetch_popular_curseforge
+
+# GAME IDs
+# Minecraft = 432
+# Hytale = 70216
+
+# Class IDs
+# Modpacks = 4471
+# Mod = 6
+# Resource Pack = 12
+# World = 17
 
 if __name__ == "__main__":
-    featuredCurseforge = fetch_featured_curseforge(70216)
-    for mod in featuredCurseforge:
-        print(mod['links']['websiteUrl'])
+    CurseForgeModpacks = fetch_popular_curseforge(432)
+    for modpack in CurseForgeModpacks:
+        print(modpack['name'])
+    

@@ -21,3 +21,25 @@ def fetch_featured_curseforge(gameId: int):
     jsonDataResponse = r.json()['data']['featured']
 
     return jsonDataResponse
+
+def fetch_popular_curseforge(gameId: int, classId: int=4471):
+    headers = {
+        'Accept': 'application/json',
+        'x-api-key': CURSEFORGE_API_KEY
+    }
+
+    if gameId == 432:
+        r = requests.get('https://api.curseforge.com/v1/mods/search', params={
+            'gameId': gameId,
+            'classId': classId,
+            'sortField': 'popularity',
+            'sortOrder': 'desc'
+        }, headers = headers)
+    else:
+        r = requests.get('https://api.curseforge.com/v1/mods/search', params={
+            'gameId': gameId,
+            'sortField': 'popularity',
+            'sortOrder': 'desc'
+        }, headers = headers)
+
+    return r.json()['data']
