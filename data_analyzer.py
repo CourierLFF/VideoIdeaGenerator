@@ -3,6 +3,7 @@ import json
 from dotenv import load_dotenv
 from data_sources.curseforge import fetch_featured_curseforge, fetch_popular_curseforge
 from data_sources.youtube import get_links_from_channel
+from utils import extract_name_from_url
 
 load_dotenv()
 
@@ -39,6 +40,25 @@ def analyze_curseforge(data):
             "downloads": entry['downloadCount'],
         }
     return important_info
+
+def analyze_youtube_links(links):
+    names = [extract_name_from_url(link) for link in links]
+    for i, name in enumerate(names):
+        names[i] = name.replace("-", " ").title()
+
+    names_and_links = {name: link for name, link in zip(names, links)}
+    return names_and_links
+
+def count_duplicate_links(links):
+    duplicate_dict = {}
+    for link in links:
+        if link in duplicate_dict:
+            duplicate_dict[link] += 1
+        else:
+            duplicate_dict[link] = 1
+    return sorted(duplicate_dict.items(), key=lambda x: x[1], reverse=True)
+
+
 
 def export_data_to_file(data, filename="data.json"):
     with open(filename, "w") as f:

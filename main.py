@@ -1,4 +1,4 @@
-from data_analyzer import analyze_curseforge, export_data_to_file, gather_data
+from data_analyzer import analyze_curseforge, count_duplicate_links, export_data_to_file, gather_data, analyze_youtube_links
 from data_sources.curseforge import fetch_featured_curseforge, fetch_popular_curseforge
 from data_sources.youtube import get_links_from_channel, search_popular_videos
 import os
@@ -22,5 +22,6 @@ if __name__ == "__main__":
     with open("data.json", "r") as f:
         datajson = json.load(f)
     
-    analyzed_data = analyze_curseforge(datajson["popularCurseForgeMinecraftModpacks"])
-    print(analyzed_data)
+    duplicated_dicts = count_duplicate_links(datajson["hytale_links"])
+    for dict in duplicated_dicts:
+        print(f"{dict[0]}: {dict[1]}")
