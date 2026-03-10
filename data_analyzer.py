@@ -1,4 +1,5 @@
 import os
+import json
 from dotenv import load_dotenv
 from data_sources.curseforge import fetch_featured_curseforge, fetch_popular_curseforge
 from data_sources.youtube import get_links_from_channel
@@ -30,3 +31,15 @@ def gather_data():
         "hytale_links": hytale_links
     }
 
+def analyze_curseforge(data):
+    important_info = {}
+    for entry in data:
+        important_info[entry['name']] = {
+            "url": entry['links']['websiteUrl'],
+            "downloads": entry['downloadCount'],
+        }
+    return important_info
+
+def export_data_to_file(data, filename="data.json"):
+    with open(filename, "w") as f:
+        json.dump(data, f, indent=4)

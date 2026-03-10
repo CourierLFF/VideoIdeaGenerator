@@ -2,3 +2,4 @@ todo.txt
 .env
 .venv
 __pycache__/
+data.json
