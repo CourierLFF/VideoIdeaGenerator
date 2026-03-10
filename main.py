@@ -16,8 +16,5 @@ load_dotenv()
 # World = 17
 
 if __name__ == "__main__":
-    minecraft_channel_ids = os.getenv("MINECRAFT_YOUTUBE_CHANNEL_IDS").split(",")
-    hytale_channel_ids = os.getenv("HYTALE_YOUTUBE_CHANNEL_IDS").split(",")
-    description_data = get_links_from_channel(hytale_channel_ids)
-    print(description_data)
+    pass
     
