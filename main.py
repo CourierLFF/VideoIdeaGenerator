@@ -22,6 +22,14 @@ if __name__ == "__main__":
     with open("data.json", "r") as f:
         datajson = json.load(f)
     
-    duplicated_dicts = count_duplicate_links(datajson["hytale_links"])
-    for dict in duplicated_dicts:
-        print(f"{dict[0]}: {dict[1]}")
+    analyzed_curseforge_featured_minecraft = analyze_curseforge(datajson['featuredCurseForgeMinecraft'])
+    analyzed_curseforge_featured_hytale = analyze_curseforge(datajson['featuredCurseForgeHytale'])
+
+    analyzed_curseforge_popular_minecraft_modpacks = analyze_curseforge(datajson['popularCurseForgeMinecraftModpacks'])
+    analyzed_curseforge_popular_minecraft_mods = analyze_curseforge(datajson['popularCurseForgeMinecraftMods'])
+    analyzed_curseforge_popular_hytale = analyze_curseforge(datajson['popularCurseForgeHytale'])
+
+    duplicate_links_minecraft = count_duplicate_links(datajson['minecraft_links'])
+    duplicate_links_hytale = count_duplicate_links(datajson['hytale_links'])
+
+    print(analyzed_curseforge_featured_minecraft)
