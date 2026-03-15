@@ -15,9 +15,9 @@ def gather_data():
     featuredCurseForgeMinecraft = fetch_featured_curseforge(432)
     featuredCurseForgeHytale = fetch_featured_curseforge(70216)
 
-    popularCurseForgeMinecraftModpacks = fetch_popular_curseforge(432, 4471)
-    popularCurseForgeMinecraftMods = fetch_popular_curseforge(432, 6)
-    popularCurseForgeHytale = fetch_popular_curseforge(70216)
+    # popularCurseForgeMinecraftModpacks = fetch_popular_curseforge(432, 4471)
+    # popularCurseForgeMinecraftMods = fetch_popular_curseforge(432, 6)
+    # popularCurseForgeHytale = fetch_popular_curseforge(70216)
 
     minecraft_links = get_links_from_channel(minecraft_channel_ids)
     hytale_links = get_links_from_channel(hytale_channel_ids)
@@ -25,9 +25,9 @@ def gather_data():
     return {
         "featuredCurseForgeMinecraft": featuredCurseForgeMinecraft,
         "featuredCurseForgeHytale": featuredCurseForgeHytale,
-        "popularCurseForgeMinecraftModpacks": popularCurseForgeMinecraftModpacks,
-        "popularCurseForgeMinecraftMods": popularCurseForgeMinecraftMods,
-        "popularCurseForgeHytale": popularCurseForgeHytale,
+        # "popularCurseForgeMinecraftModpacks": popularCurseForgeMinecraftModpacks,
+        # "popularCurseForgeMinecraftMods": popularCurseForgeMinecraftMods,
+        # "popularCurseForgeHytale": popularCurseForgeHytale,
         "minecraft_links": minecraft_links,
         "hytale_links": hytale_links
     }
