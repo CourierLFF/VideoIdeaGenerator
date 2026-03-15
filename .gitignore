@@ -3,3 +3,5 @@ todo.txt
 .venv
 __pycache__/
 data.json
+test.csv
+video_titles.txt
