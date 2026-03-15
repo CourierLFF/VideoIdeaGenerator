@@ -1,3 +1,4 @@
+from pathlib import Path
 import re
 
 def extract_cf_and_modrinth_urls(text: str):
@@ -10,3 +11,14 @@ def extract_name_from_url(url: str):
     if match:
         return match.group(0)
     return None
+
+
+def directories_check():
+    current_dir = Path('current_data')
+    archive_dir = Path('archived_data')
+
+    if not current_dir.exists():
+        current_dir.mkdir()
+    
+    if not archive_dir.exists():
+        archive_dir.mkdir()

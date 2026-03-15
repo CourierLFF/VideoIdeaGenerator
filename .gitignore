@@ -5,3 +5,5 @@ __pycache__/
 data.json
 test.csv
 video_titles.txt
+archived_data/
+current_data/

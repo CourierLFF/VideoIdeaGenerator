@@ -1,7 +1,27 @@
 import csv
+import os
+import shutil
+from utils import directories_check
+from pathlib import Path
+from datetime import datetime
+
 
 def write_csv(analyzed_cf_mc, analyzed_cf_hy, duplicate_links_mc, duplicate_links_hy, video_titles):
-    with open("test.csv", 'w', newline='') as csvfile:
+    directories_check()
+
+    current_dir = Path('current_data')
+    archive_dir = Path('archived_data')
+
+    with os.scandir(current_dir) as entries:
+        entries_list = list(entries)
+    if entries_list:
+        for entry in entries_list:
+            if entry.is_file():
+                shutil.move(entry.path, archive_dir / entry.name)
+
+
+
+    with open(current_dir / f"data_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.csv", 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
 
         titles_list = video_titles.split("\n\n")
